@@ -1,0 +1,14 @@
+<h1>Users' index method Invoked</h1>
+<%= "User List" %>
+
+<div id="users">
+<% for user in @users %>
+  <div class="user">
+    <p>
+      <strong><%=h user.name || user.email %></strong>
+      <%= link_to "Add Friend", friendships_create_path(:friend_id => user), :method => :post %>
+      <div class=""></div>
+    </p>
+  </div>
+<% end %>
+</div>
