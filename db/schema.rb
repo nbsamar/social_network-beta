@@ -10,13 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170710101611) do
+ActiveRecord::Schema.define(version: 20170712105742) do
 
   create_table "friendships", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "friend_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id", "friend_id"], name: "index_friendships_on_user_id_and_friend_id", unique: true
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.integer  "user_id"
+    t.text     "post_text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
+  create_table "sqlite_stat1", id: false, force: :cascade do |t|
+    t. "tbl"
+    t. "idx"
+    t. "stat"
+  end
+
+  create_table "sqlite_stat4", id: false, force: :cascade do |t|
+    t. "tbl"
+    t. "idx"
+    t. "neq"
+    t. "nlt"
+    t. "ndlt"
+    t. "sample"
   end
 
   create_table "users", force: :cascade do |t|

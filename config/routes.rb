@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+  resources :posts
   # get 'sessions/new'
 
   # get 'sessions/create'
@@ -11,10 +13,8 @@ Rails.application.routes.draw do
 
   root 'users#index'
 
-
-
   devise_for :users
   get 'users/abc'
-  resources :users
+  resources  :users
   get 'home/index'
 end

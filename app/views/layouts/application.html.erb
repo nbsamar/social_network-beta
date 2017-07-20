@@ -3,31 +3,25 @@
   <head>
     <title><%= h(yield(:title) || "Untitled") %></title>
     <%= stylesheet_link_tag 'application' %>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <%= yield(:head) %>
     <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tag %>
   </head>
   <body>
-    <div id="container">
+    <div id="container-fluid">
       <div id="menu">
         <% if user_signed_in? %>
           Welcome <%= current_user.name %>! Not you?
           <%= link_to "Log Out", destroy_user_session_path ,:method=>:delete %> |
-          <%= link_to "View Profile", edit_user_path(current_user) %>
+          <span class="glyphicon glyphicon-user"></span>&nbsp<%= link_to "View Profile", edit_user_path(current_user) %>
         <% else %>
           <%= link_to "Sign Up", new_user_registration_path %> or
           <%= link_to "Log In", new_user_session_path %>.
         <% end %>
-      </div
+      </div>
 
       <%- flash.each do |name, msg| -%>
         <%= content_tag :div, msg, :id => "flash_#{name}" %>
       <%- end -%>
-      
-      
-      
       <%= yield %>
     </div>
-  </body>
-</html>
